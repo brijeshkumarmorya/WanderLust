@@ -142,7 +142,7 @@ app.use((err, req, res, next) => {
         console.error("🚨 Error:", err);
     }
 
-    res.status(status).render("error", { err });
+    res.status(status).render("error", { message });
 });
 
 // =========================
