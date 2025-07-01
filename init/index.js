@@ -1,22 +1,28 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
-
-main()
-    .then(() => {
-        console.log("connection successful");
-    })
-    .catch((err) => console.log(err));
-
-async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
 }
 
+const dbUrl = process.env.ATLAS_DB_URL;
+async function connectDB() {
+    try {
+        await mongoose.connect(dbUrl, {
+            tls: true,
+        });
+        console.log("✅ MongoDB connection successful");
+    } catch (err) {
+        console.error("❌ MongoDB connection error:", err.message);
+        process.exit(1); // Exit the app if DB connection fails
+    }
+}
+connectDB();
+
 const initDb = async () => {
-    await Listing.deleteMany({});
     initData.data = initData.data.map((obj) => ({
         ...obj,
-        owner: "685e3fad0ea41ab3d4ad603c",
+        owner: "6862960877f231b9fe5b34ab",
     }));
     await Listing.insertMany(initData.data);
 };

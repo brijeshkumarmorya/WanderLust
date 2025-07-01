@@ -10,6 +10,9 @@ Router.route("/signup")
     .get(userContoller.renderSignUpForm)
     .post(wrapAsync(userContoller.userSignUp));
 
+Router.get("/verify-otp", userContoller.renderOTPForm);
+Router.post("/verify-otp", wrapAsync(userContoller.verifyOTP));
+
 // Show login form
 Router.get("/login", userContoller.userLoginForm);
 
