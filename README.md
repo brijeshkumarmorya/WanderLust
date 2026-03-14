@@ -1,4 +1,4 @@
-# WanderLust -- Travel Listings Platform
+# WanderLust - Travel Listings Platform
 
 WanderLust is a full-stack web application that enables users to
 explore, create, and review travel accommodation listings. The platform
@@ -9,6 +9,10 @@ platform.
 The project is built using **Node.js, Express, MongoDB, and EJS**
 following the **MVC architecture** and **RESTful API design
 principles**.
+
+
+🔗 **Application:**  
+https://wanderlust-81q2.onrender.com/
 
 ------------------------------------------------------------------------
 
